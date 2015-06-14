@@ -294,6 +294,7 @@
         <module>user-common</module>
         <module>user-core</module>
         <module>user-client</module>
+		  <module>user-dal</module>
     </modules>
 
 </project>

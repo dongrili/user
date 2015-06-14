@@ -29,7 +29,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.meitun.user.client.dal"/>
+        <property name="basePackage" value="com.meitun.user.dal"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
