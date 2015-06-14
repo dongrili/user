@@ -4,6 +4,7 @@ import com.meitun.user.client.UserFacadeService;
 import com.meitun.user.common.model.User;
 import com.meitun.user.dal.domain.UserDO;
 import com.meitun.user.dal.mapper.UserMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 @Service("userFacadeService")
 public class UserFacadeServiceImpl implements UserFacadeService {
 
+    Logger logger = Logger.getLogger(this.getClass());
+
     @Autowired
     private UserMapper userMapper;
 
@@ -21,7 +24,9 @@ public class UserFacadeServiceImpl implements UserFacadeService {
            return null;
        }
        UserDO userDO = userMapper.getUserById(userId);
-
+        if(logger!=null){
+            logger.debug("收到请求："+userDO);
+        }
         User user = new User();
         if(userDO!=null){
             user.setUserName(userDO.getName());
