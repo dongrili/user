@@ -6,18 +6,18 @@
 
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
         <!-- Connection Info -->
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/user" />
-        <property name="username" value="root" />
-        <property name="password" value="" />
+        <property name="driverClassName" value="${dataSource.driverClassName}" />
+        <property name="url" value="${dataSource.url}" />
+        <property name="username" value="${dataSource.username}" />
+        <property name="password" value="${dataSource.password}" />
         <!-- Connection Pooling Info -->
-        <property name="maxActive" value="100" />
-        <property name="maxIdle" value="10" />
-        <property name="maxWait" value="10000"/>
-        <property name="defaultAutoCommit" value="false" />
+        <property name="maxActive" value="${dataSource.maxActive}" />
+        <property name="maxIdle" value="${dataSource.maxIdle}" />
+        <property name="maxWait" value="${dataSource.maxWait}"/>
+        <property name="defaultAutoCommit" value="${dataSource.defaultAutoCommit}" />
 
-        <property name="timeBetweenEvictionRunsMillis" value="30000" />
-        <property name="minEvictableIdleTimeMillis" value="30000" />
+        <property name="timeBetweenEvictionRunsMillis" value="${dataSource.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${dataSource.minEvictableIdleTimeMillis}" />
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
