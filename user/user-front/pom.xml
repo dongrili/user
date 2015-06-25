@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <profiles>
+
     <profile>
       <id>dev</id>
       <activation>
@@ -19,10 +20,20 @@
       </properties>
     </profile>
 
+    <profile>
+      <id>pro</id>
+      <properties>
+        <props>pro</props>
+      </properties>
+    </profile>
+
   </profiles>
 
-  <build>
 
+  <build>
+    <filters>
+      <filter>src/main/resources/config/${props}.properties</filter>
+    </filters>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -30,6 +41,7 @@
         <includes>
           <include>**/*.xml</include>
           <include>**/*.properties</include>
+          <include>**/*.xlsx</include>
         </includes>
         <excludes>
           <exclude>**/.svn</exclude>
@@ -41,6 +53,7 @@
         <includes>
           <include>**/*.xml</include>
           <include>**/*.properties</include>
+          <include>**/*.xlsx</include>
         </includes>
       </resource>
     </resources>

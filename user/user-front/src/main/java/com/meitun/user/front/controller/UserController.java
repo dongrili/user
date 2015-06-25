@@ -3,6 +3,8 @@ package com.meitun.user.front.controller;
 import com.meitun.user.common.model.User;
 import com.meitun.user.front.ao.UserAO;
 import org.apache.commons.lang.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class UserController {
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserAO userAO;
 
@@ -23,9 +27,13 @@ public class UserController {
     @RequestMapping("/getUserById.json")
     public User getUserById(HttpServletRequest request){
         String userId = request.getParameter("userId");
+        if(logger!=null){
+            logger.info("收到请求"+userId+this.getClass());
+        }
+
         if(NumberUtils.isNumber(userId)){
             return  userAO.getUserById(Long.parseLong(userId));
         }
-        return null;
+        return new User();
     }
 }
