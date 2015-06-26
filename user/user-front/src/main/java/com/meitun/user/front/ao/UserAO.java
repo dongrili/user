@@ -2,6 +2,8 @@ package com.meitun.user.front.ao;
 
 import com.meitun.user.client.UserFacadeService;
 import com.meitun.user.common.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserAO {
 
+   private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserFacadeService userFacadeService;
 
     public User getUserById(Long userId){
+        logger.info("userId:"+userId);
         if(userId == null){
             return null;
         }
