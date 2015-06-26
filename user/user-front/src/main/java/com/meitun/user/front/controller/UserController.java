@@ -1,5 +1,6 @@
 package com.meitun.user.front.controller;
 
+import com.meitun.user.common.BaseResult;
 import com.meitun.user.common.model.User;
 import com.meitun.user.front.ao.UserAO;
 import org.apache.commons.lang.math.NumberUtils;
@@ -25,15 +26,21 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/getUserById.json")
-    public User getUserById(HttpServletRequest request){
+    public BaseResult<User> getUserById(HttpServletRequest request){
+
+        BaseResult<User> result = new BaseResult<User>();
         String userId = request.getParameter("userId");
         if(logger!=null){
             logger.info("收到请求"+userId+this.getClass());
         }
 
         if(NumberUtils.isNumber(userId)){
-            return  userAO.getUserById(Long.parseLong(userId));
+            User user =  userAO.getUserById(Long.parseLong(userId));
+            result.setData(user);
+            result.setSuccess(true);
+            return result;
         }
-        return new User();
+        result.setMessage("param is null");
+        return  result;
     }
 }
