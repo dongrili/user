@@ -3,6 +3,7 @@ package com.meitun.user.common.model;
 import com.meitun.user.common.ToString;
 
 /**
+ * user
  * Created by ldrs on 2015/6/4.
  */
 public class User extends ToString {
