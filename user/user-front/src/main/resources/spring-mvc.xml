@@ -2,26 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
         >
-
-
-    <!--  annotation默认的方法映射适配器 -->
-    <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-
-    <bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-
-    <!-- spring mvc ResponseBody 支持 json -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
-            </list>
-        </property>
-    </bean>
-
-
-
-    <!-- <bean id="customDubboProxy" class="com.nfsq.xs.market.biz.proxy.CustomDubboProxy"/> -->
-
+    
     <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
     <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
     <bean id="exceptionResolver"
